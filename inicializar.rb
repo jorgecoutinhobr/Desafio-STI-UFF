@@ -15,6 +15,7 @@ module Inicializar
       puts 'Matricula inválida, digite novamente: '
       matricula = gets.chomp
       dados_aluno = BuscaAluno.por_matricula(matricula)
+      return exit if matricula.empty?
     end
     dados_aluno
   end
