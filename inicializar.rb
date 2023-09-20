@@ -1,11 +1,9 @@
 require './aluno'
 require './busca_aluno'
-require './verificador'
 require './gerar_email'
 require './atualizar_dados'
 
 module Inicializar
-
   def self.dados_aluno
     puts 'Digite sua matrícula: ' 
     matricula = gets.chomp
@@ -22,14 +20,12 @@ module Inicializar
   
   def self.aluno(dados_aluno)
     aluno = Aluno.new(dados_aluno)
-    possui_uffmail = Verificador.possui_uffmail?(aluno.uffmail)
-    if possui_uffmail
-      puts "O aluno(a): #{aluno.nome} Já possui uffmail."
+    if aluno.uffmail
+      puts "O aluno(a): #{aluno.nome} já possui uffmail."
       exit
     end
 
-    status_inativo = Verificador.inativo?(aluno.status)
-    if status_inativo
+    if aluno.inativo?
       puts "O aluno(a): #{aluno.nome} está inativo."
       puts 'Impossível criar uffmail.'
       exit

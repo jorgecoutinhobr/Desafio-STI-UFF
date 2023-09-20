@@ -11,4 +11,8 @@ class Aluno
 		@uffmail = aluno['uffmail']
 		@status = aluno['status']
   end
+
+	def inativo?
+	  status.downcase == 'inativo'
+	end
 end
